@@ -25,8 +25,8 @@ logger = logging.getLogger(__name__)
 # Constants #
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'test_data')
 SUB_DATA_DIR = os.path.join(DATA_DIR, 'common')
-CALC_PKA_DIR = 'calc_pka'
 PDB_DIR = os.path.join(DATA_DIR, 'pdb_edit')
+FES_DIR = os.path.join(SUB_DATA_DIR, 'fes_out')
 DEF_FILE_PAT = 'fes*.out'
 CORR_KEY = 'corr'
 COORD_KEY = 'coord'
@@ -39,14 +39,14 @@ GOOD_ATOM_DICT = {1: 20, 2: 21, 3: 22, 4: 23, 5: 24, 6: 25, 7: 26, 8: 27, 9: 2, 
                   15: 7, 16: 8, 17: 9, 18: 10, 19: 11, 20: 12, 21: 13, 22: 14, 23: 15, 24: 16, 25: 17, 26: 18, 27: 19}
 
 
-CSV_FILE = os.path.join(DATA_DIR, CALC_PKA_DIR, 'rad_PMF_last2ns3_1.txt')
+CSV_FILE = os.path.join(SUB_DATA_DIR, 'rad_PMF_last2ns3_1.txt')
 FRENG_TYPES = [float, str]
 
 ORIG_WHAM_ROOT = "PMF_last2ns3_1"
 ORIG_WHAM_FNAME = ORIG_WHAM_ROOT + ".txt"
 ORIG_WHAM_PATH = os.path.join(DATA_DIR, ORIG_WHAM_FNAME)
 SHORT_WHAM_PATH = os.path.join(DATA_DIR, ORIG_WHAM_FNAME)
-EMPTY_CSV = os.path.join(DATA_DIR, 'empty.csv')
+EMPTY_CSV = os.path.join(SUB_DATA_DIR, 'empty.csv')
 
 OUT_PFX = 'rad_'
 
@@ -197,9 +197,9 @@ class TestReadCsvDict(unittest.TestCase):
         self.assertEqual(test_dict, GOOD_ATOM_DICT)
 
     def testReadPDBDict(self):
-        test_type = '  HY1 '
-        test_elem = ' H'
-        test_dict = read_csv_dict(ELEM_DICT_FILE, pdb_dict=True)
+        test_type = 'HY1'
+        test_elem = 'H'
+        test_dict = read_csv_dict(ELEM_DICT_FILE, pdb_dict=True, strip=True)
         self.assertTrue(test_type in test_dict)
         self.assertEqual(test_elem, test_dict[test_type])
         self.assertEqual(31, len(test_dict))
