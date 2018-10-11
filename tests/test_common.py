@@ -15,12 +15,14 @@ from che696_examples.common import (find_files_by_dir, read_csv, write_csv, str_
                                     InvalidDataError,
                                     pbc_calc_vector, pbc_vector_avg, unit_vector, vec_angle, vec_dihedral, calc_k,
                                     read_csv_header, get_fname_root, fmt_row_data, quote, dequote,
-                                    )
+                                    list_to_file, silent_remove, read_csv_to_dict)
 
 __author__ = 'hbmayes'
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+LOGGER_ON = logger.isEnabledFor(logging.DEBUG)
+
 
 # Constants #
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'test_data')
@@ -212,7 +214,6 @@ class TestReadCsvDict(unittest.TestCase):
         except ValueError as e:
             self.assertTrue("invalid literal for int()" in e.args[0])
 
-
     def testStringDictCheckDups(self):
         # Check that fails elegantly
         try:
@@ -289,6 +290,32 @@ class TestWriteCsv(unittest.TestCase):
                 self.assertDictEqual(data[i], csv_row)
         finally:
             shutil.rmtree(tmp_dir)
+
+
+class TestReadCSVToDict(unittest.TestCase):
+    def testReadCSVToDict(self):
+        f_name = os.path.join(SUB_DATA_DIR, 'align_input1.csv')
+        col_name = 'timestep'
+        dict_from_csv = read_csv_to_dict(f_name, col_name)
+        test_dict = {20349000: {'timestep': 20349000.0, 'a': 1.08940815703, 'b': 2.5576246461, 'c': 1.46821648907},
+                     20349100: {'timestep': 20349100.0, 'a': 1.06137248961, 'b': 2.54961064343, 'c': 1.48823815382},
+                     20349200: {'timestep': 20349200.0, 'a': 1.07719799833, 'b': 2.5555802304, 'c': 1.47838223207},
+                     20349300: {'timestep': 20349300.0, 'a': 1.03661136199, 'b': 2.48012048137, 'c': 1.44350911938},
+                     20349400: {'timestep': 20349400.0, 'a': 1.06251718339, 'b': 2.47131876633, 'c': 1.40880158294},
+                     20349500: {'timestep': 20349500.0, 'a': 1.10603563003, 'b': 2.5709271159, 'c': 1.46489148587},
+                     20349600: {'timestep': 20349600.0, 'a': 1.03610901651, 'b': 2.50963384288, 'c': 1.47352482637},
+                     20349700: {'timestep': 20349700.0, 'a': 1.07721143937, 'b': 2.55911153734, 'c': 1.48190009798}}
+        self.assertDictEqual(dict_from_csv, test_dict)
+
+    def testReadCSVToDictNoSuchCol(self):
+        e = None
+        try:
+            f_name = os.path.join(SUB_DATA_DIR, 'align_input1.csv')
+            col_name = 'ghost'
+            read_csv_to_dict(f_name, col_name)
+            self.assertIsNotNone(e)
+        except InvalidDataError as e:
+            self.assertIsNotNone(e)
 
 
 class TestFormatData(unittest.TestCase):
