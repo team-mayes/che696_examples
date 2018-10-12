@@ -6,18 +6,11 @@ Adds a string to the beginning and end of a file.
 from __future__ import print_function
 
 import sys
-from che696_examples.common import (InvalidDataError, create_out_fname, warning, ThrowingArgumentParser,
-                                    ArgumentParserError)
+from che696_examples.common import (create_out_fname, warning, ThrowingArgumentParser,
+                                    ArgumentParserError, GOOD_RET, INPUT_ERROR, IO_ERROR)
 
 __author__ = 'hmayes'
 
-
-# Error Codes
-# The good status code
-GOOD_RET = 0
-INPUT_ERROR = 1
-IO_ERROR = 2
-INVALID_DATA = 3
 
 # Constants #
 
