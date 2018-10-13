@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Given a file with columns of data (comma or space separated):
 return a file that has lines filtered by specified min and max values

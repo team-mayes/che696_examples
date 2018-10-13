@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Given a file with columns of data (space separated, no other data):
 by default: returns the min, max, avg, and std dev per column
@@ -44,7 +45,8 @@ def parse_cmdline(argv):
 
     # initialize the parser object:
     parser = argparse.ArgumentParser(description='Reads in space-separated columns and returns the min, max, avg, and '
-                                                 'std dev for each column.')
+                                                 'std dev for each column. It can optionally prepare histograms of '
+                                                 'non-numerical data.')
     parser.add_argument("-f", "--file", help="The location of the file with the dimensions with one line per vector, "
                                              "space-separated, containing at least two lines. The default file is {}, "
                                              "located in the current directory".format(DEF_ARRAY_FILE),
