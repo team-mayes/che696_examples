@@ -31,6 +31,14 @@ before_install:
   - python -V
 
 install:
+  - ./.travis/install.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - # Useful for debugging any issues with conda
+  - conda info -a
 
     # Create test environment for package
   - conda create -n test python=$PYTHON_VER pip pytest pytest-cov
