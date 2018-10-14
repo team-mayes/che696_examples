@@ -11,8 +11,7 @@ import argparse
 import shutil
 import sys
 
-from latex_tools.tex_common import (warning, InvalidDataError,
-                                    GOOD_RET, INPUT_ERROR)
+from che696_examples.common import (warning, InvalidDataError, GOOD_RET, INPUT_ERROR)
 
 try:
     # noinspection PyCompatibility
