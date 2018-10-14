@@ -26,10 +26,6 @@ before_install:
   - df -h
   - ulimit -a
 
-    # Install the Python environment
-  - source devtools/travis-ci/before_install.sh
-  - python -V
-
 install:
   - ./.travis/install.sh
   - bash miniconda.sh -b -p $HOME/miniconda
