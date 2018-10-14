@@ -30,7 +30,9 @@ setup(
                                       ],
                   },     package_dir={'che696_examples': 'che696_examples'},
 
-    test_suite='tests', install_requires=['numpy', 'six', 'matplotlib', 'pandas']
+    test_suite='tests',
+    install_requires=['numpy', 'six', 'matplotlib', 'pandas', 'seaborn'],
+    tests_require=['pytest']
     # Additional entries you may want simply uncomment the lines you want and fill in the data
     # author_email='me@place.org',      # Author email
     # url='http://www.my_package.com',  # Website
