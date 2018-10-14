@@ -1,9 +1,8 @@
 che696_examples
 ==============================
 [//]: # (Badges)
-[![Travis Build Status](https://travis-ci.org/REPLACE_WITH_OWNER_ACCOUNT/che696_examples.png)](https://travis-ci.org/REPLACE_WITH_OWNER_ACCOUNT/che696_examples)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/che696_examples/branch/master)
-[![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/che696_examples/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/che696_examples/branch/master)
+[![Travis Build Status](https://travis-ci.org/team-mayes/che696_examples.svg?branch=master)](https://travis-ci.org/team-mayes/che696_examples)
+[![codecov](https://codecov.io/gh/team-mayes/che696_examples/branch/master/graph/badge.svg)](https://codecov.io/gh/team-mayes/che696_examples/branch/master)
 
 Several Python scripts to serve as examples for ChE 696 individual projects
 
